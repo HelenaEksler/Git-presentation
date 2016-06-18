@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>CSSS: A brief introduction</title>
-	
+	<title>Git: A brief introduction</title>
+
 	<link href="slideshow.css" rel="stylesheet" />
 	<link href="theme.css" rel="stylesheet" />
 	<link href="talk.css" rel="stylesheet" />
@@ -12,227 +12,287 @@
 </head>
 <body data-duration="10">
 
-<header id="intro" class="slide">
-	<h1>
-		<object data="logo.svg" width="100%" type="image/svg+xml">
-			<img src="logo.png" alt="CSSS: CSS-based SlideShow System" />
-		</object>
-	</h1>
-	<p class="attribution">By Lea Verou</p>
-</header>
 <section>
 	<header class="slide">
-		<h1>Introduction</h1>
+		<h1>Git: Basics</h1>
 	</header>
-	
-	<section class="slide" title="CSSS: Introduction">
+
+	<section class="slide">
 		<h2>What is it?</h2>
-		<p>A simple framework for building presentations with modern web standards</p>
-		<ul>
-			<li class="delayed">An HTML file contains the whole presentation</li>
-			<li class="delayed">Themes as CSS files</li>
-			<li class="delayed">JavaScript handles what CSS can't (keyboard shortcuts etc)</li>
-		</ul>
+		<p>
+			By far, the most widely used modern version control system in the world
+			today is Git. Git is a mature, actively maintained open source project
+			originally developed in 2005 by Linus Torvalds
+		</p>
+		<br/>
+		<p>
+			When you do actions in Git, nearly all of them only add data to the Git
+			database. It is hard to get the system to do anything that is not undoable
+			or to make it erase data in any way. As in any VCS, you can lose or mess
+			up changes you haven’t committed yet; but after you commit a snapshot
+			into Git, it is very difficult to lose, especially if you regularly push
+			your database to another repository.
+		</p>
 	</section>
-	
+
 	<section class="slide">
-		<h2>History</h2>
+		<h2>File statuses</h2>
+		<p>
+			Git has three main states that your files can reside in:
+			<br/>
+			Untracked<br/>
+			Unmodified<br/>
+			Modified<br/>
+			Staged<br/>
+			Commited<br/>
+		</p>
+		<img class="delayed" src="img/lifecycle.png"/>
+	</section>
+
+	<section class="slide">
+		<h2>Files status changes</h2>
 		<ul>
-			<li class="delayed">I had to create a presentation for my talk at <a href="http://front-trends.com">Front Trends 2010</a></li>
-			<li class="delayed">The only web-based presentation systems I knew of didn't fit my needs</li>
-			<li class="delayed">&hellip;so I rolled up my own</li>
-			<li class="delayed">FT2010 attendees asked me to release it</li>
-			<li class="delayed">and here it is! ;-)</li>
+			<ol>To check files status <br/>
+				<code>$ git status</code>
+			</ol>
+			<ol>To move file from Untracked or Modifide to Staged:<br/>
+				<code>$ git add &lt;filename&gt; </code><br/>
+				To add all files:<br/>
+				<code>$ git add * </code><br/>
+			</ol>
+			<ol>To commit files:<br/>
+				<code>$ git commit &lt;filename&gt;</code><br/>
+				To commit all staged files:<br/>
+				<code>$ git commit</code><br/>
+				To commit all modified, staged and untracked files:<br/>
+				<code>$ git commit -a </code><br/>
+				To commit with specific message:<br/>
+				<code>$ git commit -m"&lt;Your message&gt;"</code><br/>
+			</ol>
+			<ol>
+				To see not staged changes:<br/>
+				<code>$ git diff</code> <br/>
+				To see staged changes: <br/>
+				<code>$ git diff --staged</code>
+			</ol>
 		</ul>
 	</section>
-	
-	<section class="slide" id="navigation">
-		<h2>Navigation</h2>
-		<p>Only through keyboard for now :(</p>
+	<section class="slide">
+		<h2>Ignoring files</h2>
+		<p>You can also ignore some files in order not to track them and their changes.
+			<br/>
+			For this - simply add file (or folder) to <strong>.gitignore</strong> file:
+		</p>
+		<br/>
+		<code>/config/config-local.php<br/>
+		/uploads<br/>
+		/uploads/*</code>
+		<br/>
+		<br/>
+		<p> Note: If you are trying to ignore file that is already tracked - it
+			won't be ignored even if it was added to <strong>.gitignore</strong> file.
+		</p>
+	</section>
+	<section class="slide">
+		<h2>Undoing things</h2>
+		<p>On any step of the work you can undo things.
+			<br/>
+			Git provides couple of ways of doing this:
+		</p>
+		<br/>
 		<ul>
-			<li>→ or ↓ to advance to the next slide or incrementally displayed item</li>
-			<li>← or ↑ to go to the previous slide or incrementally displayed item</li>
-			<li>Ctrl* + → or Ctrl* + ↓ to jump to the next slide</li>
-			<li>Ctrl* + ← or Ctrl* + ↑ to jump to the previous slide</li>
-			<li>Home to go to the first slide, End to go to the last</li>
-			<li>Ctrl* + G to jump to an arbitrary slide (by slide number or identifier)</li>
+			<ol>
+				Unstage changes: <br/>
+				<code>$ git reset HEAD &lt;filename&gt;</code>
+			</ol>
+			<ol>
+				Revert all currently not commited changes: <br/>
+				<code>$ git reset --hard</code>
+			</ol>
+			<ol>
+				Revert not staged changes: <br/>
+				<code>$ git checkout -- &lt;filename&gt;</code>
+			</ol>
+			<ol>Revert commit: <br/>
+				<code>
+					$ git revert &lt;commit&gt;
+				</code>
+			</ol>
+			<ol>
+				Revert the commit we just created: <br/>
+				<code>
+					$ git revert HEAD
+				</code>
+			</ol>
+			<ol>
+				Remove untracked files: <br/>
+				<code>
+					$ git clean
+				</code>
+			</ol>
 		</ul>
-		<p>* Ctrl or Shift actually. Only Shift works in Opera.</p>
 	</section>
 </section>
 
 <section>
 	<header class="slide">
-		<h1>Features</h1>
+		<h1>Remotes</h1>
 	</header>
-	
-	<section class="slide">
-		<h2>Thumbnail view</h2>
-		<p>Press Ctrl+H (or Shift+H if you're in Opera) now.</p>
-		<p class="delayed">Cool, huh? You can press Ctrl+Shift+H to see all slides (warning: can be slow!)</p>
-	</section>
-	
-	<section class="slide">
-		<h2>Timer</h2>
-		<ul>
-			<li>Timer in the form of a progress bar on the top</li>
-			<li>Define the talk duration with the attribute <code>data-duration</code> on the <code>body</code></li>
-			<li>Style the timer and the end state with the selectors <code>#timer</code> and <code>#timer.end</code> respectively.</li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>Presenter view</h2>
-		<p>This slide has presenter notes. They are only visible in presenter view (Ctrl+P or Shift+P).</p>
-		<p class="presenter-notes">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</section>
-	
-	<section class="slide">
-		<style scoped>
-			h2 {
-				font-size: 200%;
-				font-weight: bold;
-			}
-		</style>
-		<h2><code>&lt;style scoped /&gt;</code></h2>
-		<p>You can use the HTML5 <code>scoped</code> attribute on style elements in slides, to only style the current slide or inside sections that include multiple slides to style all of them and nothing else.</p>
-		<p>For example, inspect this slide and then run <code>$$('style[scoped]')[0].sheet.cssRules[0].selectorText</code> in the console to see how the original selector gets changed.</p>
-	</section>
-	
-	<section class="slide">
-		<h2>More features</h2>
-		<ul>
-			<li class="delayed">IDs are dynamically assigned by JavaScript&hellip;</li>
-			<li class="delayed">&hellip;but you can also assign your own, bringing the best of both worlds</li>
-			<li class="delayed">Incremental display of slide contents (just add <code>class="delayed"</code>)</li>
-			<li class="delayed">Slide scaling based on window size (size everything you want to be scalable in ems)</li>
-			<li class="delayed">Document.title changing according to slide title (fetched either from the <code>title</code> attribute or the slide's heading)</li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>Drawbacks</h2>
-		<ul>
-			<li>Only supports modern browsers. Why?
-				<ul>
-					<li>More lightweight</li>
-					<li>Easier to understand code</li>	
-					<li>It's a presentation, so the environment is controlled anyway</li>
-				</ul>
-			</li>
-			<li>No mouse click to advance to the next slide. I consider it annoying.</li>
-			<li>Doesn't work in mobile :(</li>
-		</ul>
-	</section>
-</section>
 
-<section>
-	<header class="slide">
-		<h1>Plugins</h1>
-	</header>
-	
 	<section class="slide">
-		<h2>Plugin: CSS Snippets</h2>
-		<pre>new CSSSnippet(document.getElementById('snippet'));</pre>
-		<ul>
-			<li>Dynamically edit CSS and reflect the results in any element's style
-				<ul>
-					<li>Which one? Specify a selector with the <code>data-subject</code> attribute or leave blank for the slide to be the subject</li>
-				</ul>
-			<li>Automatically prefixes CSS3 properties/values, when needed
-				<ul>
-					<li>Also does it with the style attribute (statically) if the element is not a text field (doesn't work in IE and Firefox 3.6)</li>
-				</ul>
-			</li>
-			<li>Textarea automatically adjusts rows/font-size on line break (use class <code>dont-adjust</code> to turn off)</li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>CSS Snippets demo</h2>
-		<p>Edit the following CSS code:</p>
-		<textarea class="snippet">background-color:red;
-background-image: linear-gradient(red, #600)</textarea>
-	</section>
-	
-	<section class="slide" id="animation-demo">
-		<h2>CSS Snippets: raw CSS</h2>
-		<textarea class="snippet" data-raw>@keyframes rainbow {
-	from, to { background: red }
-	16% { background: yellow }
-	33% { background: green }
-	50% { background: aqua }
-	66% { background: blue }
-	83% { background: fuchsia }
-}
+		<h2>Remote branches</h2>
+		<p>To be able to collaborate on any Git project, you need to know how to
+			manage your remote repositories. Remote repositories are versions of your
+			project that are hosted on the Internet or network somewhere. You can have
+			several of them, each of which generally is either read-only or read/write
+			for you. Collaborating with others involves managing these remote
+			repositories and pushing and pulling data to and from them when you need
+			to share work.
+		</p>
+		<div class="two-columns">
+			<img src="img/remote-branches-1.png"/ height="400px" style="background: rgba(255,255,255,0.6);">
 
-#animation-demo { animation: 30s rainbow infinite; }</textarea>
-	</section>
-	
-	<section class="slide">
-		<h2>Plugin: CSS Controls</h2>
-		<ul>
-			<li>Use sliders and other controls to adjust CSS values
 				<ul>
-					<li>Which one? Specify a selector with the <code>data-subject</code> attribute or leave blank for the slide to be the subject</li>
-					<li>Specify style with <code>data-style</code> (use <code>{value}</code> where the result will be)</li>
+					<ol>
+						Command to add new remote: <br/>
+						<code>$ git remote add &lt;shortname&gt; &lt;url&gt;</code> <br/>
+					</ol>
+					<ol>Command to see the list of remotes: <br/>
+						<code>$ git remote</code> <br/>
+					</ol>
 				</ul>
-			<li>Automatically prefixes CSS3 properties/values, when needed</li>
-		</ul>
+
+		</div>
 	</section>
-	
-	<section class="slide" id="css-controls-demo">
-		<h2>CSS Controls demo</h2>
-		<label>Slide lightness: 
-			<input type="range" min="0" max="255" value="128" data-style="background-color:rgb({value}, {value}, {value});" class="css-control" />
-		</label>
-		<label>
-			border-width:
-			<input type="number" min="0" max="60" value="30" data-style="border-width: {value}px;" class="css-control" size="5" />
-		</label>
-		<label>
-			font-family:
-			<select data-style="font-family: {value};" class="css-control">
-				<option selected>sans-serif</option>
-				<option>Georgia, serif</option>
-				<option>Consolas, monospace</option>
-				<option>'Trebuchet MS', sans-serif</option>
-			</select>
-		</label>
-	</section>
-	
+
 	<section class="slide">
-		<h2>Plugin: Code highlight</h2>
+		<h2>Forks</h2>
+		<p>So when you are forking repository - you are creating a related copy of the project, and each fork can be added as a remote.</p>
+		<br/>
+		<img src="img/fork.png" style="background: rgba(255,255,255,0.6);">
+	</section>
+	<section class="slide">
+		<h2>Branches</h2>
+		<p>
+			Nearly every VCS has some form of branching support. Branching means you
+			diverge from the main line of development and continue to do work without
+			messing with that main line. <br/>
+			Also you could use the branches when you work
+			on different tasks at same time and you want to keep these changes separately.
+		</p>
+		<br/>
+		<div>
+			<div class="column-one" style="width:50%; float: left;">
+				<p>
+					To move to existing branch use command: <br/>
+					<code>$ git checkout &lt;branchname&gt;</code>
+				</p>
+				<br/>
+				<p>
+					To move to new branch use command: <br/>
+					<code>$ git checkout -b &lt;branchname&gt;<br/></code>
+					Note: The branch a new one will be compared to is the one you have
+					done checkout from, so checkout from master branch.
+				</p>
+				<br/>
+				<img src="img/branches.png" style="background: rgba(255,255,255,0.6);"/>
+			</div>
+			<div class="column-two" style="width:50%; float: right;">
+				<p>
+					And for each branch you can create <u>Merge request</u>. <br/>
+					All changes from the branch can be <u>"Merged"</u> into the <u>master</u> branch.
+				</p>
+				<img src="img/branches1.png" style="background: rgba(255,255,255,0.6);"/>
+				<p>
+					Or you can update your branch with the last changes made in master:
+				</p>
+				<img src="img/branches2.png" style="background: rgba(255,255,255,0.6);"/>
+			</div>
+		</div>
+
+
+	</section>
+
+	<section class="slide">
+		<h2>Keeping versions up-to-date</h2>
+		<p>
+			Keep your fork and local version up to date with the main. For this we
+			should from time to time take the recent changes from the main remote to
+			our local master branch, push them into the fork master, and also it's
+			part of the best practices to re-roll all the branches from the recent master.
+		</p><br/>
 		<ul>
-			<li>Syntax highlighting for every <code>&lt;code&gt;</code> element with a <code>lang</code> attribute.</li>
-			<li>Only highlights when the slide becomes active, for performance</li>
-			<li>Currently only supports JavaScript, but it's easy to add any language</li>
-			<li>Styling done through easy to understand classes like <code>.string</code> or <code>.comment</code></li>
+			<ol>
+				To have the master branch up to date with the main remote: <br/>
+				<code>
+					$ git fetch &lt;remote&gt; - This will bring all changes to your local version of the remote.<br/>
+					$ git checkout master<br/>
+					$ git merge &lt;remote&gt;/master - This will put changes from remote master into your local master.<br/>
+					$ git push origin master - This will put changes from your local master into your fork.<br/>
+				</code><br/>
+				Instead of <u>fetch</u> and <u>merge</u> you can  use one command - <u>pull</u>.<br/>
+				<code>
+					$ git checkout master<br/>
+					$ git pull &lt;remote&gt;/master<br/>
+					$ git push origin master<br/>
+				</code>
+			</ol>
+			<ol>
+				To re-roll the feature branches from master: <br/>
+				<code>
+					$ git checkout &lt;branch&gt;<br/>
+					$ git merge &lt;remote&gt;/master<br/>
+				</code>
+
+			</ol>
 		</ul>
 	</section>
-	
+
 	<section class="slide">
-		<h2>Code highlight example</h2>
-		<pre><code lang="javascript">// Comment
-document.addEventListener('DOMAttrModified',function(e) {
-  var node = e.target, attr = e.attrName;
-  if(/^input$/i.test(node.nodeName) 
-    &amp;&amp; (attr === 'placeholder' || attr === 'value')
-    || foo > 5)
-      Placeholder.update(node);
-}, false);</code></pre>
+		<h2>The workflow</h2>
+
+		<ul>
+			<ol>
+				1. Fork the project:<br/>
+				<!-- <img src="img/fork-gitlab.png" height="150px"> -->
+			</ol>
+			<ol>
+				2. Clone the fork repository and add the main as the other remote:<br/>
+				<code>
+					$ git clone https://gitlab.com/helenaeksler/test.git<br/>
+					$ git remote add main https://gitlab.com/ewave/test.git<br/>
+				</code>
+			</ol>
+			<ol>
+				3. Start working in the separate branch:<br/>
+				<code>
+					$ git checkout -b bugfix<br/>
+					$ git status<br/>
+					$ git add *<br/>
+					$ git commit -m"My commit with the bug fix"<br/>
+				</code>
+			</ol>
+			<ol>
+				4. Push your changes to the fork repository:<br/>
+				<code>
+					$ git push origin bugfix<br/>
+				</code>
+				And create the Merge Request - compare the branch <u>bugfix</u> and <u>main/master</u>
+			</ol>
+			<ol>
+				5.Evey day update your local and fork repositories: <br/>
+				<code>
+					$ git checkout master<br/>
+					$ git pull main/master<br/>
+					$ git push origin master<br/>
+					$ git checkout bugfix<br/>
+					$ git merge origin/master<br/>
+				</code>
+			</ol>
+		</ul>
 	</section>
+
 </section>
-<footer class="slide" title="The End">
-	<h2>Thank you!</h2>
-	<p>Get it or contribute at <a href="http://github.com/LeaVerou/CSSS">http://github.com/LeaVerou/CSSS</a></p>
-	<p>Credits:</p>
-	<ul>
-		<li><a href="http://lukeroberts.us/2008/12/wallpaper-colourful-wood/">Colored wood background by Luke Roberts</a></li>
-		<li>The name CSSS is actually inspired by S5, as you could probably guess ;-)</li>
-		<li>A big thanks to the community at Github for various contributions to this project</li>
-	</ul>
-</footer>
 
 <script src="slideshow.js"></script>
 <script src="plugins/css-edit.js"></script>
@@ -252,6 +312,6 @@ for(var i=0; i<cssControls.length; i++) {
 	new CSSControl(cssControls[i]);
 }
 </script>
-	
+
 </body>
 </html>

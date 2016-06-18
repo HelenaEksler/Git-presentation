@@ -33,9 +33,19 @@
 	object[type="image/svg+xml"] {
 		display: none;
 	}
-	
+
 	#intro h1 {
 		background: url(logo.svg) no-repeat center;
 		background-size:100% auto;
 	}
+}
+
+.two-columns img {
+	display: inline-block;
+}
+
+.two-columns ul {
+	display: inline-block;
+	width: 49%;
+	float: right;
 }

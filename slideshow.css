@@ -34,7 +34,7 @@
 	left:0;
 	z-index:1;
 
-	font-size: 250%;
+	font-size: 100%;
 	line-height: 1.6;
 }
 
@@ -279,7 +279,7 @@ iframe.csss-import.show {
 	padding: .1em 0;
 	background: rgba(0,0,0,.5);
 	color: white;
-	font-size: 250%;
+	font-size: 100%;
 	text-align: center;
 	text-shadow: .05em .05em .1em black;
 	transform: none;
