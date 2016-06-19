@@ -37,21 +37,30 @@
 
 	<section class="slide">
 		<h2>File statuses</h2>
-		<p>
-			Git has three main states that your files can reside in:
-			<br/>
-			Untracked<br/>
-			Unmodified<br/>
-			Modified<br/>
-			Staged<br/>
-			Commited<br/>
-		</p>
-		<img class="delayed" src="img/lifecycle.png"/>
+		<br/>
+		<div>
+			<div class="column-one" style="width:50%; float: left;">
+				<p>
+					Git has three main states that your files can reside in:
+					<br/>
+					<br/>
+					<ul style="margin-left: 120px;">
+						<li>Untracked</li>
+						<li>Unmodified</li>
+						<li>Modified</li>
+						<li>Staged</li>
+						<li>Commited</li>
+					</ul>
+				</p>
+			</div>
+			<div class="column-two" style="width:50%; float: right;">
+				<img src="img/lifecycle.png"/>
+			</div>
 	</section>
 
 	<section class="slide">
 		<h2>Files status changes</h2>
-		<ul>
+		<ul style="width: 50%; float: left;">
 			<ol>To check files status <br/>
 				<code>$ git status</code>
 			</ol>
@@ -60,6 +69,14 @@
 				To add all files:<br/>
 				<code>$ git add * </code><br/>
 			</ol>
+			<ol>
+				To see not staged changes:<br/>
+				<code>$ git diff</code> <br/>
+				To see staged changes: <br/>
+				<code>$ git diff --staged</code>
+			</ol>
+		</ul>
+		<ul style="width: 50%; float: right;">
 			<ol>To commit files:<br/>
 				<code>$ git commit &lt;filename&gt;</code><br/>
 				To commit all staged files:<br/>
@@ -69,15 +86,11 @@
 				To commit with specific message:<br/>
 				<code>$ git commit -m"&lt;Your message&gt;"</code><br/>
 			</ol>
-			<ol>
-				To see not staged changes:<br/>
-				<code>$ git diff</code> <br/>
-				To see staged changes: <br/>
-				<code>$ git diff --staged</code>
-			</ol>
+
 		</ul>
 	</section>
-	<section class="slide">
+
+	<section class="slide" style="padding-left: 130px;">
 		<h2>Ignoring files</h2>
 		<p>You can also ignore some files in order not to track them and their changes.
 			<br/>
@@ -89,26 +102,34 @@
 		/uploads/*</code>
 		<br/>
 		<br/>
-		<p> Note: If you are trying to ignore file that is already tracked - it
+		<p style="color: red;"> Note: If you are trying to ignore file that is already tracked - it
 			won't be ignored even if it was added to <strong>.gitignore</strong> file.
 		</p>
 	</section>
 	<section class="slide">
 		<h2>Undoing things</h2>
-		<p>On any step of the work you can undo things.
-			<br/>
+		<p style="text-align: center;">
+			On any step of the work you can undo things.
 			Git provides couple of ways of doing this:
 		</p>
 		<br/>
-		<ul>
+		<ul style="width: 50%; float: right;">
 			<ol>
 				Unstage changes: <br/>
 				<code>$ git reset HEAD &lt;filename&gt;</code>
 			</ol>
 			<ol>
+				Remove untracked files: <br/>
+				<code>
+					$ git clean
+				</code>
+			</ol>
+			<ol>
 				Revert all currently not commited changes: <br/>
 				<code>$ git reset --hard</code>
 			</ol>
+		</ul>
+		<ul style="width: 50%; float: right;">
 			<ol>
 				Revert not staged changes: <br/>
 				<code>$ git checkout -- &lt;filename&gt;</code>
@@ -122,12 +143,6 @@
 				Revert the commit we just created: <br/>
 				<code>
 					$ git revert HEAD
-				</code>
-			</ol>
-			<ol>
-				Remove untracked files: <br/>
-				<code>
-					$ git clean
 				</code>
 			</ol>
 		</ul>
@@ -149,9 +164,8 @@
 			repositories and pushing and pulling data to and from them when you need
 			to share work.
 		</p>
-		<div class="two-columns">
-			<img src="img/remote-branches-1.png"/ height="400px" style="background: rgba(255,255,255,0.6);">
-
+		<div class="two-columns" style="margin-top: 30px;">
+			<img src="img/remote-branches-1.png" style="background: rgba(255,255,255,0.6);">
 				<ul>
 					<ol>
 						Command to add new remote: <br/>
@@ -167,9 +181,16 @@
 
 	<section class="slide">
 		<h2>Forks</h2>
-		<p>So when you are forking repository - you are creating a related copy of the project, and each fork can be added as a remote.</p>
-		<br/>
-		<img src="img/fork.png" style="background: rgba(255,255,255,0.6);">
+		<div class="two-columns" style="margin-top: 30px;">
+			<img src="img/fork.png" style="background: rgba(255,255,255,0.6); width: 40%;">
+
+			<p style="display: inline-block; float: right; width: 50%;">
+				So when you are forking repository - you are creating a related copy of
+				the project, and each fork can be added as a remote.
+			</p>
+		</div>
+
+
 	</section>
 	<section class="slide">
 		<h2>Branches</h2>
@@ -182,31 +203,37 @@
 		</p>
 		<br/>
 		<div>
-			<div class="column-one" style="width:50%; float: left;">
+			<div class="column-one" style="width:42%; float: left;">
 				<p>
 					To move to existing branch use command: <br/>
 					<code>$ git checkout &lt;branchname&gt;</code>
 				</p>
-				<br/>
 				<p>
 					To move to new branch use command: <br/>
-					<code>$ git checkout -b &lt;branchname&gt;<br/></code>
-					Note: The branch a new one will be compared to is the one you have
-					done checkout from, so checkout from master branch.
+					<code>$ git checkout -b &lt;branchname&gt;</code>
+					<br/>
+					<br/>
+					<span style="color: red;">
+						Note: The branch a new one will be compared to is the one you have
+						done checkout from.
+					</span>
 				</p>
 				<br/>
-				<img src="img/branches.png" style="background: rgba(255,255,255,0.6);"/>
+				<img src="img/branches.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
 			</div>
-			<div class="column-two" style="width:50%; float: right;">
+			<div class="column-two" style="width:42%; float: right;">
 				<p>
 					And for each branch you can create <u>Merge request</u>. <br/>
 					All changes from the branch can be <u>"Merged"</u> into the <u>master</u> branch.
 				</p>
-				<img src="img/branches1.png" style="background: rgba(255,255,255,0.6);"/>
+				<br/>
+				<img src="img/branches1.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
+				<br/>
+				<br/>
 				<p>
 					Or you can update your branch with the last changes made in master:
 				</p>
-				<img src="img/branches2.png" style="background: rgba(255,255,255,0.6);"/>
+				<img src="img/branches2.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
 			</div>
 		</div>
 
@@ -275,8 +302,9 @@
 			<ol>
 				4. Push your changes to the fork repository:<br/>
 				<code>
-					$ git push origin bugfix<br/>
+					$ git push origin bugfix
 				</code>
+				<br/>
 				And create the Merge Request - compare the branch <u>bugfix</u> and <u>main/master</u>
 			</ol>
 			<ol>
