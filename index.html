@@ -260,7 +260,7 @@
 				Instead of <u>fetch</u> and <u>merge</u> you can  use one command - <u>pull</u>.<br/>
 				<code>
 					$ git checkout master<br/>
-					$ git pull &lt;remote&gt;/master<br/>
+					$ git pull &lt;remote&gt; master<br/>
 					$ git push origin master<br/>
 				</code>
 			</ol>
@@ -274,7 +274,43 @@
 			</ol>
 		</ul>
 	</section>
-
+	<section class="slide">
+		<h2>Stash</h2>
+		<p>If you have some changes locally and want to move for a second to other branch for other task, 
+			but your work is not finished yet - you propaply don't want to commit not finished work, 
+			but definately want to save changes. For this you can use "stash" system, which will take 
+			you local not-commited changes, and put them to the side. After you finish with other stuff - 
+			you can get back to your branch and bring your changes back from stash.</p>
+		<ul>
+			<ol>
+				Put your changes to stash:<br/>
+				<code>
+					$ git stash
+				</code>
+			</ol>
+			<ol>
+				To see which stashes you’ve stored:<br/>
+				<code>
+					$ git stash list <br/>
+					$ stash@{0}: WIP on master: 049d078 added the index file <br/>
+					$ stash@{1}: WIP on master: c264051 Revert "added file_size" <br/>
+					$ stash@{2}: WIP on master: 21d80a5 added number to log <br/>
+				</code>
+			</ol>
+			<ol>
+				To apply the last stash:<br/>
+				<code>
+					$ git stash apply
+				</code>
+			</ol>
+			<ol>
+				To apply the last stash:<br/>
+				<code>
+					$ git stash apply &lt;stash id&gt;
+				</code>
+			</ol>
+		</ul>
+	</section>
 	<section class="slide">
 		<h2>The workflow</h2>
 
