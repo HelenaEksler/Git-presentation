@@ -14,348 +14,127 @@
 
 <section>
 	<header class="slide">
-		<h1>Git: Basics</h1>
+		<h1>Coding standards</h1>
 	</header>
 
 	<section class="slide">
 		<h2>What is it?</h2>
 		<p>
-			By far, the most widely used modern version control system in the world
-			today is Git. Git is a mature, actively maintained open source project
-			originally developed in 2005 by Linus Torvalds
+			 Coding conventions are a set of guidelines for a specific programming
+       language that recommend programming style, practices, and methods for
+       each aspect of a program written in that language.
+		<br/>
+      When we learn a new language, we usually begin to code in a specific style.
+      In most cases, we’ll write in a style that we want, not one that has been
+      suggested to us. But once we start to code using a particular style, like
+      a spoken language dialect, it will become second nature — we’ll use that
+      style in everything we create. Such a style might include the conventions
+      we use to name variables and functions ($userName, $username or $user_name
+      for example), and how we comment our work. Any style should ensure that we
+      can read our code easily.
+      <br/>
+      However, what happens when we start to code bigger projects and introduce
+      additional people to help create a large application? Conflicts in the way
+      you write your code will most definitely appear.
+      <br/>
+      Following coding standards makes our code readable  for other developers
+      which is important when you work in team. And it makes it easier to
+      understand what is going on in the code after some time.
 		</p>
-		<br/>
-		<p>
-			When you do actions in Git, nearly all of them only add data to the Git
-			database. It is hard to get the system to do anything that is not undoable
-			or to make it erase data in any way. As in any VCS, you can lose or mess
-			up changes you haven’t committed yet; but after you commit a snapshot
-			into Git, it is very difficult to lose, especially if you regularly push
-			your database to another repository.
-		</p>
-	</section>
-
-	<section class="slide">
-		<h2>File statuses</h2>
-		<br/>
-		<div>
-			<div class="column-one" style="width:50%; float: left;">
-				<p>
-					Git has three main states that your files can reside in:
-					<br/>
-					<br/>
-					<ul style="margin-left: 120px;">
-						<li>Untracked</li>
-						<li>Unmodified</li>
-						<li>Modified</li>
-						<li>Staged</li>
-						<li>Commited</li>
-					</ul>
-				</p>
-			</div>
-			<div class="column-two" style="width:50%; float: right;">
-				<img src="img/lifecycle.png"/>
-			</div>
-	</section>
-
-	<section class="slide">
-		<h2>Files status changes</h2>
-		<ul style="width: 50%; float: left;">
-			<ol>To check files status <br/>
-				<code>$ git status</code>
-			</ol>
-			<ol>To move file from Untracked or Modifide to Staged:<br/>
-				<code>$ git add &lt;filename&gt; </code><br/>
-				To add all files:<br/>
-				<code>$ git add * </code><br/>
-			</ol>
-			<ol>
-				To see not staged changes:<br/>
-				<code>$ git diff</code> <br/>
-				To see staged changes: <br/>
-				<code>$ git diff --staged</code>
-			</ol>
-		</ul>
-		<ul style="width: 50%; float: right;">
-			<ol>To commit files:<br/>
-				<code>$ git commit &lt;filename&gt;</code><br/>
-				To commit all staged files:<br/>
-				<code>$ git commit</code><br/>
-				To commit all modified, staged and untracked files:<br/>
-				<code>$ git commit -a </code><br/>
-				To commit with specific message:<br/>
-				<code>$ git commit -m"&lt;Your message&gt;"</code><br/>
-			</ol>
-
-		</ul>
-	</section>
-
-	<section class="slide" style="padding-left: 130px;">
-		<h2>Ignoring files</h2>
-		<p>You can also ignore some files in order not to track them and their changes.
-			<br/>
-			For this - simply add file (or folder) to <strong>.gitignore</strong> file:
-		</p>
-		<br/>
-		<code>/config/config-local.php<br/>
-		/uploads<br/>
-		/uploads/*</code>
-		<br/>
-		<br/>
-		<p style="color: red;"> Note: If you are trying to ignore file that is already tracked - it
-			won't be ignored even if it was added to <strong>.gitignore</strong> file.
-		</p>
-	</section>
-	<section class="slide">
-		<h2>Undoing things</h2>
-		<p style="text-align: center;">
-			On any step of the work you can undo things.
-			Git provides couple of ways of doing this:
-		</p>
-		<br/>
-		<ul style="width: 50%; float: right;">
-			<ol>
-				Unstage changes: <br/>
-				<code>$ git reset HEAD &lt;filename&gt;</code>
-			</ol>
-			<ol>
-				Remove untracked files: <br/>
-				<code>
-					$ git clean
-				</code>
-			</ol>
-			<ol>
-				Revert all currently not commited changes: <br/>
-				<code>$ git reset --hard</code>
-			</ol>
-		</ul>
-		<ul style="width: 50%; float: right;">
-			<ol>
-				Revert not staged changes: <br/>
-				<code>$ git checkout -- &lt;filename&gt;</code>
-			</ol>
-			<ol>Revert commit: <br/>
-				<code>
-					$ git revert &lt;commit&gt;
-				</code>
-			</ol>
-			<ol>
-				Revert the commit we just created: <br/>
-				<code>
-					$ git revert HEAD
-				</code>
-			</ol>
-		</ul>
 	</section>
 </section>
 
-<section>
+<section name="PHP-coding-standards">
 	<header class="slide">
-		<h1>Remotes</h1>
+		<h1>PHP coding standards</h1>
 	</header>
 
 	<section class="slide">
-		<h2>Remote branches</h2>
-		<p>To be able to collaborate on any Git project, you need to know how to
-			manage your remote repositories. Remote repositories are versions of your
-			project that are hosted on the Internet or network somewhere. You can have
-			several of them, each of which generally is either read-only or read/write
-			for you. Collaborating with others involves managing these remote
-			repositories and pushing and pulling data to and from them when you need
-			to share work.
-		</p>
-		<div class="two-columns" style="margin-top: 30px;">
-			<img src="img/remote-branches-1.png" style="background: rgba(255,255,255,0.6);">
-				<ul>
-					<ol>
-						Command to add new remote: <br/>
-						<code>$ git remote add &lt;shortname&gt; &lt;url&gt;</code> <br/>
-					</ol>
-					<ol>Command to see the list of remotes: <br/>
-						<code>$ git remote</code> <br/>
-					</ol>
-				</ul>
-
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Forks</h2>
-		<div class="two-columns" style="margin-top: 30px;">
-			<img src="img/fork.png" style="background: rgba(255,255,255,0.6); width: 40%;">
-
-			<p style="display: inline-block; float: right; width: 50%;">
-				So when you are forking repository - you are creating a related copy of
-				the project, and each fork can be added as a remote.
-			</p>
-		</div>
-
-
-	</section>
-	<section class="slide">
-		<h2>Branches</h2>
+		<h2>Indenting and Whitespace</h2>
 		<p>
-			Nearly every VCS has some form of branching support. Branching means you
-			diverge from the main line of development and continue to do work without
-			messing with that main line. <br/>
-			Also you could use the branches when you work
-			on different tasks at same time and you want to keep these changes separately.
 		</p>
-		<br/>
-		<div>
-			<div class="column-one" style="width:42%; float: left;">
-				<p>
-					To move to existing branch use command: <br/>
-					<code>$ git checkout &lt;branchname&gt;</code>
-				</p>
-				<p>
-					To move to new branch use command: <br/>
-					<code>$ git checkout -b &lt;branchname&gt;</code>
-					<br/>
-					<br/>
-					<span style="color: red;">
-						Note: The branch a new one will be compared to is the one you have
-						done checkout from.
-					</span>
-				</p>
-				<br/>
-				<img src="img/branches.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-			</div>
-			<div class="column-two" style="width:42%; float: right;">
-				<p>
-					And for each branch you can create <u>Merge request</u>. <br/>
-					All changes from the branch can be <u>"Merged"</u> into the <u>master</u> branch.
-				</p>
-				<br/>
-				<img src="img/branches1.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-				<br/>
-				<br/>
-				<p>
-					Or you can update your branch with the last changes made in master:
-				</p>
-				<img src="img/branches2.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-			</div>
-		</div>
-
-
 	</section>
 
 	<section class="slide">
-		<h2>Keeping versions up-to-date</h2>
+		<h2>Operators</h2>
 		<p>
-			Keep your fork and local version up to date with the main. For this we
-			should from time to time take the recent changes from the main remote to
-			our local master branch, push them into the fork master, and also it's
-			part of the best practices to re-roll all the branches from the recent master.
-		</p><br/>
-		<ul>
-			<ol>
-				To have the master branch up to date with the main remote: <br/>
-				<code>
-					$ git fetch &lt;remote&gt; - This will bring all changes to your local version of the remote.<br/>
-					$ git checkout master<br/>
-					$ git merge &lt;remote&gt;/master - This will put changes from remote master into your local master.<br/>
-					$ git push origin master - This will put changes from your local master into your fork.<br/>
-				</code><br/>
-				Instead of <u>fetch</u> and <u>merge</u> you can  use one command - <u>pull</u>.<br/>
-				<code>
-					$ git checkout master<br/>
-					$ git pull &lt;remote&gt; master<br/>
-					$ git push origin master<br/>
-				</code>
-			</ol>
-			<ol>
-				To re-roll the feature branches from master: <br/>
-				<code>
-					$ git checkout &lt;branch&gt;<br/>
-					$ git merge &lt;remote&gt;/master<br/>
-				</code>
+		</p>
+		<h2>String Concatenations</h2>
+		<p>
+		</p>
+  </section>
 
-			</ol>
-		</ul>
+  <section class="slide">
+    <h2>Quotes</h2>
+    <p>
+    </p>
+    <h2>Casting</h2>
+    <p>
+    </p>
 	</section>
+
 	<section class="slide">
-		<h2>Stash</h2>
-		<p>If you have some changes locally and want to move for a second to other branch for other task, 
-			but your work is not finished yet - you propaply don't want to commit not finished work, 
-			but definately want to save changes. For this you can use "stash" system, which will take 
-			you local not-commited changes, and put them to the side. After you finish with other stuff - 
-			you can get back to your branch and bring your changes back from stash.</p>
-		<ul>
-			<ol>
-				Put your changes to stash:<br/>
-				<code>
-					$ git stash
-				</code>
-			</ol>
-			<ol>
-				To see which stashes you’ve stored:<br/>
-				<code>
-					$ git stash list <br/>
-					$ stash@{0}: WIP on master: 049d078 added the index file <br/>
-					$ stash@{1}: WIP on master: c264051 Revert "added file_size" <br/>
-					$ stash@{2}: WIP on master: 21d80a5 added number to log <br/>
-				</code>
-			</ol>
-			<ol>
-				To apply the last stash:<br/>
-				<code>
-					$ git stash apply
-				</code>
-			</ol>
-			<ol>
-				To apply the last stash:<br/>
-				<code>
-					$ git stash apply &lt;stash id&gt;
-				</code>
-			</ol>
-		</ul>
+		<h2>Control Structures</h2>
+		<p>
+		</p>
+		<h2>PHP Code Tags</h2>
+		<p>
+		</p>
 	</section>
+
 	<section class="slide">
-		<h2>The workflow</h2>
-
-		<ul>
-			<ol>
-				1. Fork the project:<br/>
-				<!-- <img src="img/fork-gitlab.png" height="150px"> -->
-			</ol>
-			<ol>
-				2. Clone the fork repository and add the main as the other remote:<br/>
-				<code>
-					$ git clone https://gitlab.com/helenaeksler/test.git<br/>
-					$ git remote add main https://gitlab.com/ewave/test.git<br/>
-				</code>
-			</ol>
-			<ol>
-				3. Start working in the separate branch:<br/>
-				<code>
-					$ git checkout -b bugfix<br/>
-					$ git status<br/>
-					$ git add *<br/>
-					$ git commit -m"My commit with the bug fix"<br/>
-				</code>
-			</ol>
-			<ol>
-				4. Push your changes to the fork repository:<br/>
-				<code>
-					$ git push origin bugfix
-				</code>
-				<br/>
-				And create the Merge Request - compare the branch <u>bugfix</u> and <u>main/master</u>
-			</ol>
-			<ol>
-				5.Evey day update your local and fork repositories: <br/>
-				<code>
-					$ git checkout master<br/>
-					$ git pull main/master<br/>
-					$ git push origin master<br/>
-					$ git checkout bugfix<br/>
-					$ git merge origin/master<br/>
-				</code>
-			</ol>
-		</ul>
+		<h2>Line length and wrapping</h2>
+		<p>
+		</p>
 	</section>
 
+	<section class="slide">
+		<h2>Function Calls</h2>
+		<p>
+		</p>
+		<h2>Function Declarations</h2>
+		<p>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Arrays</h2>
+		<p>
+		</p>
+		<h2>Function Declarations</h2>
+		<p>
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Naming Conventions</h2>
+
+    <h3>Functions</h3>
+    <p>
+    </p>
+    <h3>Variables</h3>
+    <p>
+    </p>
+    <h3>Constants</h3>
+		<p>
+		</p>
+	</section>
+</section>
+
+<section name="API-documentation-comment-standards">
+  <header class="slide">
+    <h1>API documentation and comment standards</h1>
+  </header>
+  <section class="slide">
+    <h2>API documentation standards (general)</h2>
+    <p>
+    </p>
+  </section>
+  <section class="slide">
+    <h2>Standards for in-line code comments</h2>
+    <p>
+    </p>
+  </section>
 </section>
 
 <script src="slideshow.js"></script>
