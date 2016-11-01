@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Git: A brief introduction</title>
+	<title>Coding Standards</title>
 
 	<link href="slideshow.css" rel="stylesheet" />
 	<link href="theme.css" rel="stylesheet" />
@@ -18,11 +18,12 @@
 	</header>
 
 	<section class="slide">
-		<h2>What is it?</h2>
+		<p class="headline">What is it?</p>
 		<p>
 			 Coding conventions are a set of guidelines for a specific programming
        language that recommend programming style, practices, and methods for
        each aspect of a program written in that language.
+		<br/>
 		<br/>
       When we learn a new language, we usually begin to code in a specific style.
       In most cases, we’ll write in a style that we want, not one that has been
@@ -33,11 +34,13 @@
       for example), and how we comment our work. Any style should ensure that we
       can read our code easily.
       <br/>
-      However, what happens when we start to code bigger projects and introduce
-      additional people to help create a large application? Conflicts in the way
-      you write your code will most definitely appear.
       <br/>
-      Following coding standards makes our code readable  for other developers
+      It is not that hard to read some small peace of code, but when we get to
+			the large collaborated projects - no standards makes this code unreadable
+			for everybody.
+      <br/>
+      <br/>
+      Following coding standards makes our code readable for other developers
       which is important when you work in team. And it makes it easier to
       understand what is going on in the code after some time.
 		</p>
@@ -50,16 +53,97 @@
 	</header>
 
 	<section class="slide">
-		<h2>Indenting and Whitespace</h2>
+		<p class="headline">Indenting and Whitespace</p>
 		<p>
+			Indentation is not a requirement of most programming languages, where it
+			is used as secondary notation. Rather, programmers indent to better convey
+			he structure of their programs to human readers. In particular, indentation
+			is used to show the relationship between control flow constructs such as
+			conditions or loops and code contained within and outside them.
+			<br/>
+			There are several widly used options for indentetion: 2 spaces, 4 spaces and tab.
+			But I would suggest to use 2 spaces, since it won't bring your line far to
+			the right if you have a lot of levels, and will stay same for all editors
+			and systems.
+			<br/>
+			Besides indentation - we should separate different blocks with empty lines.
+			So space should be between functions, classes etc. Also it's nice to
+			separate blocks inside one function.
 		</p>
+		<br/>
+		<code>
+function some_funct() {
+return TRUE;
+}
+function main() {
+$test = some_funct();
+if ($test) {
+for ($i = 0; $i < 10; $i++) {
+if ($check = some_funct()) {
+$result[] = $i * 2;
+}
+else {
+$result[] = $i * 3;
+}
+}
+}
+return $result;
+}
+
+
+
+		</code>
+		<code>
+function some_funct() {
+	return TRUE;
+}
+
+function main() {
+	$test = some_funct();
+	if ($test) {
+		for ($i = 0; $i < 10; $i++) {
+			if ($check = some_funct()) {
+				$result[] = $i * 2;
+			}
+			else {
+				$result[] = $i * 3;
+			}
+		}
+	}
+	return $result;
+}
+
+
+		</code>
+		<code>
+function some_funct() {
+  return TRUE;
+}
+
+function main() {
+  $test = some_funct();
+
+  if ($test) {
+    for ($i = 0; $i < 10; $i++) {
+      if ($check = some_funct()) {
+        $result[] = $i * 2;
+      }
+      else {
+        $result[] = $i * 3;
+      }
+    }
+  }
+
+  return $result;
+}
+		</code>
 	</section>
 
 	<section class="slide">
-		<h2>Operators</h2>
+		<p class="headline">Operators</p>
 		<p>
 		</p>
-		<h2>String Concatenations</h2>
+		<p class="headline">String Concatenations</p>
 		<p>
 		</p>
   </section>
