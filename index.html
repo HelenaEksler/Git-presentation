@@ -71,7 +71,7 @@
 			separate blocks inside one function.
 		</p>
 		<br/>
-		<code>
+<code>
 function some_funct() {
 return TRUE;
 }
@@ -92,8 +92,8 @@ return $result;
 
 
 
-		</code>
-		<code>
+</code>
+<code>
 function some_funct() {
 	return TRUE;
 }
@@ -114,8 +114,8 @@ function main() {
 }
 
 
-		</code>
-		<code>
+</code>
+<code>
 function some_funct() {
   return TRUE;
 }
@@ -136,16 +136,47 @@ function main() {
 
   return $result;
 }
-		</code>
+</code>
 	</section>
 
 	<section class="slide">
 		<p class="headline">Operators</p>
 		<p>
+      All binary operators (operators that come between two values), such as
+      <b>+, -, =, !=, ==, >, etc.</b> should have a space before and after the operator, for readability.
 		</p>
+<code>
+$a=($b+$c/2)!=$d;
+</code>
+<code>
+$a = ($b + $c / 2) != $d;
+</code>
 		<p class="headline">String Concatenations</p>
-		<p>
-		</p>
+    <p>
+      Always use a space between the dot and the concatenated parts to improve readability.
+      <br/>
+      When you concatenate simple variables, you can use double quotes and add the variable inside; otherwise, use single quotes.
+      <br/>
+      When using the concatenating assignment operator ('.='), use a space on each side as with the assignment operator.
+    </p>
+<code>
+$string='Foo'.$bar;
+$string.='Foo'.'bar';
+
+
+</code>
+<code>
+$string = 'Foo' . $bar;
+$string = $bar . 'foo';
+$string = 'foo' . 'bar';
+$string = "Foo $bar";
+</code>
+<code>
+$string .= 'Foo';
+$string .= $bar;
+$string .= baz();
+
+</code>
   </section>
 
   <section class="slide">
