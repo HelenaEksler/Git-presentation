@@ -163,11 +163,9 @@ $a = ($b + $c / 2) != $d;
 $string='Foo'.$bar;
 $string.='Foo'.'bar';
 
-
 </code>
 <code>
 $string = 'Foo' . $bar;
-$string = $bar . 'foo';
 $string = 'foo' . 'bar';
 $string = "Foo $bar";
 </code>
@@ -180,49 +178,84 @@ $string .= baz();
   </section>
 
   <section class="slide">
-    <h2>Quotes</h2>
+    <p class="headline">Quotes</p>
     <p>
+      PHP doesn't have strict rules about which quotes to use, like for example JAVA.
+      If you are following for example Drupal coding standards - we should use
+      single quotes. There are 2 exceptions:
+      <br/>1. Deliberate in-line variable interpolation.
+      <br/>2. Translated strings where one can avoid escaping single quotes by enclosing the string in double quotes.
     </p>
-    <h2>Casting</h2>
+<code>
+$foo = 'Hello, world!';
+$bar = "Hello, $name!";
+$val = "Hello, it's nice to meet you!";
+// Instead of 'Hello, it\'s nice to meet you!'
+</code>
+    <p class="headline">Casting</p>
     <p>
+      Put a space between the (type) and the $variable in a cast:
     </p>
+    <code>(int) $mynumber</code>
 	</section>
 
 	<section class="slide">
-		<h2>Control Structures</h2>
+		<p class="headline">Control Structures</p>
 		<p>
+      Control statements should have one space between the control keyword and
+      opening parenthesis, to distinguish them from function calls.
+      <br/>
+      Always use curly braces even in situations where they are technically
+      optional. Having them increases readability and decreases the likelihood
+      of logic errors being introduced when new lines are added. The opening
+      curly should be on the same line as the opening statement, preceded by
+      one space. The closing curly should be on a line by itself and indented to
+      the same level as the opening statement.
 		</p>
-		<h2>PHP Code Tags</h2>
+<code>
+if (condition1 || condition2) {
+  action1;
+}
+elseif (condition3 && condition4) {
+  action2;
+}
+else {
+  defaultaction;
+}
+</code>
+<code></code>
+<code></code>
+		<p class="headline">PHP Code Tags</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Line length and wrapping</h2>
+		<p class="headline">Line length and wrapping</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Function Calls</h2>
+		<p class="headline">Function Calls</p>
 		<p>
 		</p>
-		<h2>Function Declarations</h2>
-		<p>
-		</p>
-	</section>
-
-	<section class="slide">
-		<h2>Arrays</h2>
-		<p>
-		</p>
-		<h2>Function Declarations</h2>
+		<p class="headline">Function Declarations</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Naming Conventions</h2>
+		<p class="headline">Arrays</p>
+		<p>
+		</p>
+		<p class="headline">Function Declarations</p>
+		<p>
+		</p>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Naming Conventions</p>
 
     <h3>Functions</h3>
     <p>
@@ -242,49 +275,49 @@ $string .= baz();
 	</header>
 
 	<section class="slide">
-		<h2>Indenting and Whitespace</h2>
+		<p class="headline">Indenting and Whitespace</p>
 		<p>
 		</p>
-		<h2>Semi-colons</h2>
+		<p class="headline">Semi-colons</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Operators</h2>
+		<p class="headline">Operators</p>
 		<p>
 		</p>
-		<h2>String Concatenations</h2>
+		<p class="headline">String Concatenations</p>
 		<p>
 		</p>
   </section>
 
 	<section class="slide">
-		<h2>Arrays</h2>
+		<p class="headline">Arrays</p>
 		<p>
 		</p>
-		<h2>Typeof</h2>
-		<p>
-		</p>
-	</section>
-
-	<section class="slide">
-		<h2>Control Structures</h2>
+		<p class="headline">Typeof</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Function Calls</h2>
-		<p>
-		</p>
-		<h2>Function Declarations</h2>
+		<p class="headline">Control Structures</p>
 		<p>
 		</p>
 	</section>
 
 	<section class="slide">
-		<h2>Naming Conventions</h2>
+		<p class="headline">Function Calls</p>
+		<p>
+		</p>
+		<p class="headline">Function Declarations</p>
+		<p>
+		</p>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Naming Conventions</p>
 
     <h3>Functions</h3>
     <p>
@@ -305,13 +338,13 @@ $string .= baz();
   </header>
 
   <section class="slide">
-    <h2>API documentation standards (general)</h2>
+    <p class="headline">API documentation standards (general)</p>
     <p>
     </p>
   </section>
 
   <section class="slide">
-    <h2>Standards for in-line code comments</h2>
+    <p class="headline">Standards for in-line code comments</p>
     <p>
     </p>
   </section>
