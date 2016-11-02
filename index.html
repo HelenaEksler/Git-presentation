@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Git: A brief introduction</title>
+	<title>Coding Standards</title>
 
 	<link href="slideshow.css" rel="stylesheet" />
 	<link href="theme.css" rel="stylesheet" />
@@ -14,348 +14,414 @@
 
 <section>
 	<header class="slide">
-		<h1>Git: Basics</h1>
+		<h1>Coding standards</h1>
 	</header>
 
 	<section class="slide">
-		<h2>What is it?</h2>
+		<p class="headline">What is it?</p>
 		<p>
-			By far, the most widely used modern version control system in the world
-			today is Git. Git is a mature, actively maintained open source project
-			originally developed in 2005 by Linus Torvalds
+			 Coding conventions are a set of guidelines for a specific programming
+       language that recommend programming style, practices, and methods for
+       each aspect of a program written in that language.
+		<br/>
+		<br/>
+      When we learn a new language, we usually begin to code in a specific style.
+      In most cases, we’ll write in a style that we want, not one that has been
+      suggested to us. But once we start to code using a particular style, like
+      a spoken language dialect, it will become second nature — we’ll use that
+      style in everything we create. Such a style might include the conventions
+      we use to name variables and functions ($userName, $username or $user_name
+      for example), and how we comment our work. Any style should ensure that we
+      can read our code easily.
+      <br/>
+      <br/>
+      It is not that hard to read some small peace of code, but when we get to
+			the large collaborated projects - no standards makes this code unreadable
+			for everybody.
+      <br/>
+      <br/>
+      Following coding standards makes our code readable for other developers
+      which is important when you work in team. And it makes it easier to
+      understand what is going on in the code after some time.
 		</p>
-		<br/>
-		<p>
-			When you do actions in Git, nearly all of them only add data to the Git
-			database. It is hard to get the system to do anything that is not undoable
-			or to make it erase data in any way. As in any VCS, you can lose or mess
-			up changes you haven’t committed yet; but after you commit a snapshot
-			into Git, it is very difficult to lose, especially if you regularly push
-			your database to another repository.
-		</p>
-	</section>
-
-	<section class="slide">
-		<h2>File statuses</h2>
-		<br/>
-		<div>
-			<div class="column-one" style="width:50%; float: left;">
-				<p>
-					Git has three main states that your files can reside in:
-					<br/>
-					<br/>
-					<ul style="margin-left: 120px;">
-						<li>Untracked</li>
-						<li>Unmodified</li>
-						<li>Modified</li>
-						<li>Staged</li>
-						<li>Commited</li>
-					</ul>
-				</p>
-			</div>
-			<div class="column-two" style="width:50%; float: right;">
-				<img src="img/lifecycle.png"/>
-			</div>
-	</section>
-
-	<section class="slide">
-		<h2>Files status changes</h2>
-		<ul style="width: 50%; float: left;">
-			<ol>To check files status <br/>
-				<code>$ git status</code>
-			</ol>
-			<ol>To move file from Untracked or Modifide to Staged:<br/>
-				<code>$ git add &lt;filename&gt; </code><br/>
-				To add all files:<br/>
-				<code>$ git add * </code><br/>
-			</ol>
-			<ol>
-				To see not staged changes:<br/>
-				<code>$ git diff</code> <br/>
-				To see staged changes: <br/>
-				<code>$ git diff --staged</code>
-			</ol>
-		</ul>
-		<ul style="width: 50%; float: right;">
-			<ol>To commit files:<br/>
-				<code>$ git commit &lt;filename&gt;</code><br/>
-				To commit all staged files:<br/>
-				<code>$ git commit</code><br/>
-				To commit all modified, staged and untracked files:<br/>
-				<code>$ git commit -a </code><br/>
-				To commit with specific message:<br/>
-				<code>$ git commit -m"&lt;Your message&gt;"</code><br/>
-			</ol>
-
-		</ul>
-	</section>
-
-	<section class="slide" style="padding-left: 130px;">
-		<h2>Ignoring files</h2>
-		<p>You can also ignore some files in order not to track them and their changes.
-			<br/>
-			For this - simply add file (or folder) to <strong>.gitignore</strong> file:
-		</p>
-		<br/>
-		<code>/config/config-local.php<br/>
-		/uploads<br/>
-		/uploads/*</code>
-		<br/>
-		<br/>
-		<p style="color: red;"> Note: If you are trying to ignore file that is already tracked - it
-			won't be ignored even if it was added to <strong>.gitignore</strong> file.
-		</p>
-	</section>
-	<section class="slide">
-		<h2>Undoing things</h2>
-		<p style="text-align: center;">
-			On any step of the work you can undo things.
-			Git provides couple of ways of doing this:
-		</p>
-		<br/>
-		<ul style="width: 50%; float: right;">
-			<ol>
-				Unstage changes: <br/>
-				<code>$ git reset HEAD &lt;filename&gt;</code>
-			</ol>
-			<ol>
-				Remove untracked files: <br/>
-				<code>
-					$ git clean
-				</code>
-			</ol>
-			<ol>
-				Revert all currently not commited changes: <br/>
-				<code>$ git reset --hard</code>
-			</ol>
-		</ul>
-		<ul style="width: 50%; float: right;">
-			<ol>
-				Revert not staged changes: <br/>
-				<code>$ git checkout -- &lt;filename&gt;</code>
-			</ol>
-			<ol>Revert commit: <br/>
-				<code>
-					$ git revert &lt;commit&gt;
-				</code>
-			</ol>
-			<ol>
-				Revert the commit we just created: <br/>
-				<code>
-					$ git revert HEAD
-				</code>
-			</ol>
-		</ul>
 	</section>
 </section>
 
-<section>
-	<header class="slide">
-		<h1>Remotes</h1>
-	</header>
-
+<section name="PHP-coding-standards">
 	<section class="slide">
-		<h2>Remote branches</h2>
-		<p>To be able to collaborate on any Git project, you need to know how to
-			manage your remote repositories. Remote repositories are versions of your
-			project that are hosted on the Internet or network somewhere. You can have
-			several of them, each of which generally is either read-only or read/write
-			for you. Collaborating with others involves managing these remote
-			repositories and pushing and pulling data to and from them when you need
-			to share work.
-		</p>
-		<div class="two-columns" style="margin-top: 30px;">
-			<img src="img/remote-branches-1.png" style="background: rgba(255,255,255,0.6);">
-				<ul>
-					<ol>
-						Command to add new remote: <br/>
-						<code>$ git remote add &lt;shortname&gt; &lt;url&gt;</code> <br/>
-					</ol>
-					<ol>Command to see the list of remotes: <br/>
-						<code>$ git remote</code> <br/>
-					</ol>
-				</ul>
-
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Forks</h2>
-		<div class="two-columns" style="margin-top: 30px;">
-			<img src="img/fork.png" style="background: rgba(255,255,255,0.6); width: 40%;">
-
-			<p style="display: inline-block; float: right; width: 50%;">
-				So when you are forking repository - you are creating a related copy of
-				the project, and each fork can be added as a remote.
-			</p>
-		</div>
-
-
-	</section>
-	<section class="slide">
-		<h2>Branches</h2>
+		<p class="headline">Indenting and Whitespace</p>
 		<p>
-			Nearly every VCS has some form of branching support. Branching means you
-			diverge from the main line of development and continue to do work without
-			messing with that main line. <br/>
-			Also you could use the branches when you work
-			on different tasks at same time and you want to keep these changes separately.
+			Indentation is not a requirement of most programming languages, where it
+			is used as secondary notation. Rather, programmers indent to better convey
+			he structure of their programs to human readers. In particular, indentation
+			is used to show the relationship between control flow constructs such as
+			conditions or loops and code contained within and outside them.
+			<br/>
+			There are several widly used options for indentetion: 2 spaces, 4 spaces and tab.
+			But I would suggest to use 2 spaces, since it won't bring your line far to
+			the right if you have a lot of levels, and will stay same for all editors
+			and systems.
+			<br/>
+			Besides indentation - we should separate different blocks with empty lines.
+			So space should be between functions, classes etc. Also it's nice to
+			separate blocks inside one function.
 		</p>
 		<br/>
-		<div>
-			<div class="column-one" style="width:42%; float: left;">
-				<p>
-					To move to existing branch use command: <br/>
-					<code>$ git checkout &lt;branchname&gt;</code>
-				</p>
-				<p>
-					To move to new branch use command: <br/>
-					<code>$ git checkout -b &lt;branchname&gt;</code>
-					<br/>
-					<br/>
-					<span style="color: red;">
-						Note: The branch a new one will be compared to is the one you have
-						done checkout from.
-					</span>
-				</p>
-				<br/>
-				<img src="img/branches.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-			</div>
-			<div class="column-two" style="width:42%; float: right;">
-				<p>
-					And for each branch you can create <u>Merge request</u>. <br/>
-					All changes from the branch can be <u>"Merged"</u> into the <u>master</u> branch.
-				</p>
-				<br/>
-				<img src="img/branches1.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-				<br/>
-				<br/>
-				<p>
-					Or you can update your branch with the last changes made in master:
-				</p>
-				<img src="img/branches2.png" style="background: rgba(255,255,255,0.6); width: 100%;"/>
-			</div>
-		</div>
+<code>
+function some_funct() {
+return TRUE;
+}
+function main() {
+$test = some_funct();
+if ($test) {
+for ($i = 0; $i < 10; $i++) {
+if ($check = some_funct()) {
+$result[] = $i * 2;
+}
+else {
+$result[] = $i * 3;
+}
+}
+}
+return $result;
+}
 
 
+
+</code>
+<code>
+function some_funct() {
+	return TRUE;
+}
+
+function main() {
+	$test = some_funct();
+	if ($test) {
+		for ($i = 0; $i < 10; $i++) {
+			if ($check = some_funct()) {
+				$result[] = $i * 2;
+			}
+			else {
+				$result[] = $i * 3;
+			}
+		}
+	}
+	return $result;
+}
+
+
+</code>
+<code>
+function some_funct() {
+  return TRUE;
+}
+
+function main() {
+  $test = some_funct();
+
+  if ($test) {
+    for ($i = 0; $i < 10; $i++) {
+      if ($check = some_funct()) {
+        $result[] = $i * 2;
+      }
+      else {
+        $result[] = $i * 3;
+      }
+    }
+  }
+
+  return $result;
+}
+</code>
 	</section>
 
 	<section class="slide">
-		<h2>Keeping versions up-to-date</h2>
+		<p class="headline">Operators</p>
 		<p>
-			Keep your fork and local version up to date with the main. For this we
-			should from time to time take the recent changes from the main remote to
-			our local master branch, push them into the fork master, and also it's
-			part of the best practices to re-roll all the branches from the recent master.
-		</p><br/>
-		<ul>
-			<ol>
-				To have the master branch up to date with the main remote: <br/>
-				<code>
-					$ git fetch &lt;remote&gt; - This will bring all changes to your local version of the remote.<br/>
-					$ git checkout master<br/>
-					$ git merge &lt;remote&gt;/master - This will put changes from remote master into your local master.<br/>
-					$ git push origin master - This will put changes from your local master into your fork.<br/>
-				</code><br/>
-				Instead of <u>fetch</u> and <u>merge</u> you can  use one command - <u>pull</u>.<br/>
-				<code>
-					$ git checkout master<br/>
-					$ git pull &lt;remote&gt; master<br/>
-					$ git push origin master<br/>
-				</code>
-			</ol>
-			<ol>
-				To re-roll the feature branches from master: <br/>
-				<code>
-					$ git checkout &lt;branch&gt;<br/>
-					$ git merge &lt;remote&gt;/master<br/>
-				</code>
+      All binary operators (operators that come between two values), such as
+      <b>+, -, =, !=, ==, >, etc.</b> should have a space before and after the operator, for readability.
+		</p>
+<code>
+$a=($b+$c/2)!=$d;
+</code>
+<code>
+$a = ($b + $c / 2) != $d;
+</code>
+		<p class="headline">String Concatenations</p>
+    <p>
+      Always use a space between the dot and the concatenated parts to improve readability.
+      <br/>
+      When you concatenate simple variables, you can use double quotes and add the variable inside; otherwise, use single quotes.
+      <br/>
+      When using the concatenating assignment operator ('.='), use a space on each side as with the assignment operator.
+    </p>
+<code>
+$string='Foo'.$bar;
+$string.='Foo'.'bar';
 
-			</ol>
-		</ul>
+</code>
+<code>
+$string = 'Foo' . $bar;
+$string = 'foo' . 'bar';
+$string = "Foo $bar";
+</code>
+<code>
+$string .= 'Foo';
+$string .= $bar;
+$string .= baz();
+
+</code>
+  </section>
+
+  <section class="slide">
+    <p class="headline">Quotes</p>
+    <p>
+      PHP doesn't have strict rules about which quotes to use, like for example JAVA.
+      If you are following for example Drupal coding standards - we should use
+      single quotes. There are 2 exceptions:
+      <br/>1. Deliberate in-line variable interpolation.
+      <br/>2. Translated strings where one can avoid escaping single quotes by enclosing the string in double quotes.
+    </p>
+<code>
+$foo = 'Hello, world!';
+$bar = "Hello, $name!";
+$val = "Hello, it's nice to meet you!";
+// Instead of 'Hello, it\'s nice to meet you!'
+</code>
+    <p class="headline">Casting</p>
+    <p>
+      Put a space between the (type) and the $variable in a cast:
+    </p>
+    <code>(int) $mynumber</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Control Structures</p>
+		<p>
+      Control statements should have one space between the control keyword and
+      opening parenthesis, to distinguish them from function calls.
+      <br/>
+      Always use curly braces even in situations where they are technically
+      optional. Having them increases readability and decreases the likelihood
+      of logic errors being introduced when new lines are added. The opening
+      curly should be on the same line as the opening statement, preceded by
+      one space. The closing curly should be on a line by itself and indented to
+      the same level as the opening statement.
+		</p>
+<code>
+if (condition1 || condition2) {
+  action1;
+}
+elseif (condition3 && condition4) {
+  action2;
+}
+else {
+  defaultaction;
+}
+</code>
+<code>
+switch ($val) {
+  case 'foo':
+    action1;
+    break;
+
+  case 'bar':
+    action2;
+    break;
+
+  default:
+    defaultaction;
+}
+</code>
+<code>
+&lt;?php if (!empty($item)): ?&gt;
+  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php foreach ($items as $item): ?&gt;
+  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+&lt;?php endforeach; ?&gt;
+</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Line length and wrapping</p>
+		<ul>
+      <li>In general, all lines of code should not be longer than 80 characters.</li>
+      <li>Lines containing longer function names, function/class definitions,
+        variable declarations, etc are allowed to exceed 80 characters.</li>
+      <li>Control structure conditions may exceed 80 characters, if they are simple
+        to read and understand:</li>
+		</p>
+<code style="white-space: pre;">
+  if ($something['with']['something']['else']['in']['here'] == mymodule_check_something($whatever['else'])) {
+     ...
+   }
+   if (isset($something['what']['ever']) && $something['what']['ever'] > $infinite && user_access('galaxy')) {
+     ...
+   }
+   // Non-obvious conditions of low complexity are also acceptable, but should
+   // always be documented, explaining WHY a particular check is done.
+   if (preg_match('@(/|\\)(\.\.|~)@', $target) && strpos($target_dir, $repository) !== 0) {
+     return FALSE;
+   }
+</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Line length and wrapping</p>
+    <p>
+      Control structure conditions should also NOT attempt to win the Most
+      Compact Condition In Least Lines Of Code Award™:
+    </p>
+<code>
+  // DON'T DO THIS!
+  if ((isset($key) && !empty($user->uid) && $key == $user->uid) ||
+    (isset($user->cache) ? $user->cache : '') == ip_address() ||
+    isset($value) && $value >= time())) {
+    ...
+  }
+</code>
+    <p>Instead, it is recommended practice to split out and prepare the conditions
+      separately, which also permits documenting the underlying reasons for the conditions:
+    </p>
+<code>
+  // Key is only valid if it matches the current user's ID, as otherwise other
+  // users could access any user's things.
+  $is_valid_user = (isset($key) && !empty($user->uid) && $key == $user->uid);
+
+  // IP must match the cache to prevent session spoofing.
+  $is_valid_cache = (isset($user->cache) ? $user->cache == ip_address() : FALSE);
+
+  // Alternatively, if the request query parameter is in the future, then it
+  // is always valid, because the galaxy will implode and collapse anyway.
+  $is_valid_query = $is_valid_cache || (isset($value) && $value >= time());
+
+  if ($is_valid_user || $is_valid_query) {
+    ...
+  }
+</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Function Calls</p>
+		<p>
+      Functions should be called with no spaces between the function name, the opening parenthesis, and the first parameter; spaces between commas and each parameter, and no space between the last parameter, the closing parenthesis, and the semicolon. Here's an example:
+		</p>
+    <code>$var = foo($bar, $baz, $quux);</code>
+		<p class="headline">Function Declarations</p>
+		<p>
+      Arguments with default values go at the end of the argument list. Always
+      attempt to return a meaningful value from a function if one is appropriate.
+    </p>
+<code>
+  function funstuff_system($field, $flag = TRUE) {
+    if ($flag) {
+      $system['description'] = t("This module inserts funny text into posts randomly.");
+    }
+    return $system[$field];
+  }
+</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Arrays</p>
+    <p>
+      Arrays should be formatted with a space separating each element (after the
+      comma), and spaces around the => key association operator, if applicable:
+    </p>
+<code>
+  $some_array = array('hello', 'world', 'foo' => 'bar');
+</code>
+    <p>
+      Note that if the line declaring an array spans longer than 80 characters
+      (often the case with form and menu declarations), each element should be
+      broken into its own line, and indented one level:
+    </p>
+<code>
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#size' => 60,
+    '#maxlength' => 128,
+  );
+</code>
+<code>
+  $form['title'] = array(
+    '#type'      => 'textfield',
+    '#title'     => t( 'Title' ),
+    '#size'      => 60,
+    '#maxlength' => 128,
+  );
+</code>
+    <p>
+      Note the comma at the end of the last array element; This is not a typo!
+      It helps prevent parsing errors if another element is placed at the end of
+      the list later.
+    </p>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Naming Conventions</p>
+
+    <h3>Functions</h3>
+    <p>
+      Functions should be named using lowercase, and words should be separated
+      with an underscore. Don’t abbreviate names un-necessarily; let the code be
+      unambiguous and self-documenting.
+    </p>
+    <h3>Variables</h3>
+    <p>
+      Variables should be named using lowercase, and words should be separated
+      either with uppercase characters or with an underscore. Be consistent;
+      do not mix camelCase and snake_case variable naming inside a file.
+    </p>
+<code>
+function some_name($some_variable) {
+  ...
+}
+</code>
+    <h3>Constants</h3>
+		<p>
+      Constants should always be all-uppercase, with underscores to separate
+      words. (This includes pre-defined PHP constants like TRUE, FALSE, and NULL.)
+		</p>
+    <code>define('DOING_AJAX', TRUE);</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Comments and Documentation</p>
+    <code>
+/**
+ * Small description.
+ *
+ * Longer description can go here, if necessary.
+ *
+ * @param string $name
+ *   User name.
+ * @param int $age
+ *   User's age.
+ * @param bool $married
+ *   (Optional) Defines user's marital status.
+ *   Default to FALSE - not married.
+ *
+ * @return bool
+ *   Returns TRUE if all went fine.
+ */
+function some_user_function($name, $age, $married = FALSE) {
+  // Check user is adult.
+  if ($age < LEGAL_ADULT) {
+    // @todo Show othe image.
+  }
+}
+    </code>
 	</section>
 	<section class="slide">
-		<h2>Stash</h2>
-		<p>If you have some changes locally and want to move for a second to other branch for other task, 
-			but your work is not finished yet - you propaply don't want to commit not finished work, 
-			but definately want to save changes. For this you can use "stash" system, which will take 
-			you local not-commited changes, and put them to the side. After you finish with other stuff - 
-			you can get back to your branch and bring your changes back from stash.</p>
-		<ul>
-			<ol>
-				Put your changes to stash:<br/>
-				<code>
-					$ git stash
-				</code>
-			</ol>
-			<ol>
-				To see which stashes you’ve stored:<br/>
-				<code>
-					$ git stash list <br/>
-					$ stash@{0}: WIP on master: 049d078 added the index file <br/>
-					$ stash@{1}: WIP on master: c264051 Revert "added file_size" <br/>
-					$ stash@{2}: WIP on master: 21d80a5 added number to log <br/>
-				</code>
-			</ol>
-			<ol>
-				To apply the last stash:<br/>
-				<code>
-					$ git stash apply
-				</code>
-			</ol>
-			<ol>
-				To apply the last stash:<br/>
-				<code>
-					$ git stash apply &lt;stash id&gt;
-				</code>
-			</ol>
-		</ul>
+    <br/>
+    <br/>
+<img src="img/classic.png" width="49%">
+<img src="img/goodtaste.png" width="49%">
 	</section>
-	<section class="slide">
-		<h2>The workflow</h2>
-
-		<ul>
-			<ol>
-				1. Fork the project:<br/>
-				<!-- <img src="img/fork-gitlab.png" height="150px"> -->
-			</ol>
-			<ol>
-				2. Clone the fork repository and add the main as the other remote:<br/>
-				<code>
-					$ git clone https://gitlab.com/helenaeksler/test.git<br/>
-					$ git remote add main https://gitlab.com/ewave/test.git<br/>
-				</code>
-			</ol>
-			<ol>
-				3. Start working in the separate branch:<br/>
-				<code>
-					$ git checkout -b bugfix<br/>
-					$ git status<br/>
-					$ git add *<br/>
-					$ git commit -m"My commit with the bug fix"<br/>
-				</code>
-			</ol>
-			<ol>
-				4. Push your changes to the fork repository:<br/>
-				<code>
-					$ git push origin bugfix
-				</code>
-				<br/>
-				And create the Merge Request - compare the branch <u>bugfix</u> and <u>main/master</u>
-			</ol>
-			<ol>
-				5.Evey day update your local and fork repositories: <br/>
-				<code>
-					$ git checkout master<br/>
-					$ git pull main/master<br/>
-					$ git push origin master<br/>
-					$ git checkout bugfix<br/>
-					$ git merge origin/master<br/>
-				</code>
-			</ol>
-		</ul>
-	</section>
-
 </section>
 
 <script src="slideshow.js"></script>
