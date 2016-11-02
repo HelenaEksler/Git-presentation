@@ -20,11 +20,11 @@
 	<section class="slide">
 		<p class="headline">What is it?</p>
 		<p>
-			 Coding conventions are a set of guidelines for a specific programming
-       language that recommend programming style, practices, and methods for
-       each aspect of a program written in that language.
-		<br/>
-		<br/>
+      Coding conventions are a set of guidelines for a specific programming
+      language that recommend programming style, practices, and methods for
+      each aspect of a program written in that language.
+      <br/>
+      <br/>
       When we learn a new language, we usually begin to code in a specific style.
       In most cases, we’ll write in a style that we want, not one that has been
       suggested to us. But once we start to code using a particular style, like
@@ -36,8 +36,8 @@
       <br/>
       <br/>
       It is not that hard to read some small peace of code, but when we get to
-			the large collaborated projects - no standards makes this code unreadable
-			for everybody.
+      the large collaborated projects - no standards makes this code unreadable
+      for everybody.
       <br/>
       <br/>
       Following coding standards makes our code readable for other developers
@@ -54,82 +54,84 @@
 			he structure of their programs to human readers. In particular, indentation
 			is used to show the relationship between control flow constructs such as
 			conditions or loops and code contained within and outside them.
-			<br/>
+    </p>
+    <p>
 			There are several widly used options for indentetion: 2 spaces, 4 spaces and tab.
 			But I would suggest to use 2 spaces, since it won't bring your line far to
 			the right if you have a lot of levels, and will stay same for all editors
 			and systems.
-			<br/>
+    </p>
+    <p>
 			Besides indentation - we should separate different blocks with empty lines.
 			So space should be between functions, classes etc. Also it's nice to
 			separate blocks inside one function.
 		</p>
-<code>
-function some_funct() {
-return TRUE;
-}
-function main() {
-$test = some_funct();
-if ($test) {
-for ($i = 0; $i < 10; $i++) {
-if ($check = some_funct()) {
-$result[] = $i * 2;
-}
-else {
-$result[] = $i * 3;
-}
-}
-}
-return $result;
-}
-
-
-
-</code>
-<code>
-function some_funct() {
-	return TRUE;
-}
-
-function main() {
-	$test = some_funct();
-	if ($test) {
-		for ($i = 0; $i < 10; $i++) {
-			if ($check = some_funct()) {
-				$result[] = $i * 2;
-			}
-			else {
-				$result[] = $i * 3;
-			}
-		}
-	}
-	return $result;
-}
-
-
-</code>
-<code>
-function some_funct() {
-  return TRUE;
-}
-
-function main() {
-  $test = some_funct();
-
-  if ($test) {
-    for ($i = 0; $i < 10; $i++) {
-      if ($check = some_funct()) {
-        $result[] = $i * 2;
-      }
-      else {
-        $result[] = $i * 3;
-      }
+    <code>
+    function some_funct() {
+    return TRUE;
     }
-  }
+    function main() {
+    $test = some_funct();
+    if ($test) {
+    for ($i = 0; $i < 10; $i++) {
+    if ($check = some_funct()) {
+    $result[] = $i * 2;
+    }
+    else {
+    $result[] = $i * 3;
+    }
+    }
+    }
+    return $result;
+    }
 
-  return $result;
-}
-</code>
+
+
+    </code>
+    <code>
+    function some_funct() {
+    	return TRUE;
+    }
+
+    function main() {
+    	$test = some_funct();
+    	if ($test) {
+    		for ($i = 0; $i < 10; $i++) {
+    			if ($check = some_funct()) {
+    				$result[] = $i * 2;
+    			}
+    			else {
+    				$result[] = $i * 3;
+    			}
+    		}
+    	}
+    	return $result;
+    }
+
+
+    </code>
+    <code>
+    function some_funct() {
+      return TRUE;
+    }
+
+    function main() {
+      $test = some_funct();
+
+      if ($test) {
+        for ($i = 0; $i < 10; $i++) {
+          if ($check = some_funct()) {
+            $result[] = $i * 2;
+          }
+          else {
+            $result[] = $i * 3;
+          }
+        }
+      }
+
+      return $result;
+    }
+    </code>
 	</section>
 
 	<section class="slide">
@@ -138,12 +140,12 @@ function main() {
       All binary operators (operators that come between two values), such as
       <b>+, -, =, !=, ==, >, etc.</b> should have a space before and after the operator, for readability.
 		</p>
-<code>
-$a=($b+$c/2)!=$d;
-</code>
-<code>
-$a = ($b + $c / 2) != $d;
-</code>
+    <code>
+    $a=($b+$c/2)!=$d;
+    </code>
+    <code>
+    $a = ($b + $c / 2) != $d;
+    </code>
 		<p class="headline">String Concatenations</p>
     <p>
       Always use a space between the dot and the concatenated parts to improve readability.
@@ -152,22 +154,22 @@ $a = ($b + $c / 2) != $d;
       <br/>
       When using the concatenating assignment operator ('.='), use a space on each side as with the assignment operator.
     </p>
-<code>
-$string='Foo'.$bar;
-$string.='Foo'.'bar';
+    <code>
+    $string='Foo'.$bar;
+    $string.='Foo'.'bar';
 
-</code>
-<code>
-$string = 'Foo' . $bar;
-$string = 'foo' . 'bar';
-$string = "Foo $bar";
-</code>
-<code>
-$string .= 'Foo';
-$string .= $bar;
-$string .= baz();
+    </code>
+    <code>
+    $string = 'Foo' . $bar;
+    $string = 'foo' . 'bar';
+    $string = "Foo $bar";
+    </code>
+    <code>
+    $string .= 'Foo';
+    $string .= $bar;
+    $string .= baz();
 
-</code>
+    </code>
   </section>
 
   <section class="slide">
