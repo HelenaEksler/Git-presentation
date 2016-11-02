@@ -237,30 +237,127 @@ switch ($val) {
     defaultaction;
 }
 </code>
+<code>
+&lt;?php if (!empty($item)): ?&gt;
+  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php foreach ($items as $item): ?&gt;
+  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+&lt;?php endforeach; ?&gt;
+</code>
 	</section>
 
 	<section class="slide">
 		<p class="headline">Line length and wrapping</p>
-		<p>
+		<ul>
+      <li>In general, all lines of code should not be longer than 80 characters.</li>
+      <li>Lines containing longer function names, function/class definitions,
+        variable declarations, etc are allowed to exceed 80 characters.</li>
+      <li>Control structure conditions may exceed 80 characters, if they are simple
+        to read and understand:</li>
 		</p>
+<code style="white-space: pre;">
+  if ($something['with']['something']['else']['in']['here'] == mymodule_check_something($whatever['else'])) {
+     ...
+   }
+   if (isset($something['what']['ever']) && $something['what']['ever'] > $infinite && user_access('galaxy')) {
+     ...
+   }
+   // Non-obvious conditions of low complexity are also acceptable, but should
+   // always be documented, explaining WHY a particular check is done.
+   if (preg_match('@(/|\\)(\.\.|~)@', $target) && strpos($target_dir, $repository) !== 0) {
+     return FALSE;
+   }
+</code>
+	</section>
+
+	<section class="slide">
+		<p class="headline">Line length and wrapping</p>
+    <p>
+      Control structure conditions should also NOT attempt to win the Most
+      Compact Condition In Least Lines Of Code Award™:
+    </p>
+<code>
+  // DON'T DO THIS!
+  if ((isset($key) && !empty($user->uid) && $key == $user->uid) ||
+    (isset($user->cache) ? $user->cache : '') == ip_address() ||
+    isset($value) && $value >= time())) {
+    ...
+  }
+</code>
+    <p>Instead, it is recommended practice to split out and prepare the conditions
+      separately, which also permits documenting the underlying reasons for the conditions:
+    </p>
+<code>
+  // Key is only valid if it matches the current user's ID, as otherwise other
+  // users could access any user's things.
+  $is_valid_user = (isset($key) && !empty($user->uid) && $key == $user->uid);
+
+  // IP must match the cache to prevent session spoofing.
+  $is_valid_cache = (isset($user->cache) ? $user->cache == ip_address() : FALSE);
+
+  // Alternatively, if the request query parameter is in the future, then it
+  // is always valid, because the galaxy will implode and collapse anyway.
+  $is_valid_query = $is_valid_cache || (isset($value) && $value >= time());
+
+  if ($is_valid_user || $is_valid_query) {
+    ...
+  }
+</code>
 	</section>
 
 	<section class="slide">
 		<p class="headline">Function Calls</p>
 		<p>
+      Functions should be called with no spaces between the function name, the opening parenthesis, and the first parameter; spaces between commas and each parameter, and no space between the last parameter, the closing parenthesis, and the semicolon. Here's an example:
 		</p>
+    <code>$var = foo ( $bar , $baz , $quux );</code>
+    <code>$var=foo($bar,$baz,$quux);</code>
+    <code>$var = foo($bar, $baz, $quux);</code>
 		<p class="headline">Function Declarations</p>
 		<p>
-		</p>
+      Arguments with default values go at the end of the argument list. Always
+      attempt to return a meaningful value from a function if one is appropriate.
+    </p>
+<code>
+  function funstuff_system($field, $flag = TRUE) {
+    if ($flag) {
+      $system['description'] = t("This module inserts funny text into posts randomly.");
+    }
+    return $system[$field];
+  }
+</code>
 	</section>
 
 	<section class="slide">
 		<p class="headline">Arrays</p>
-		<p>
-		</p>
-		<p class="headline">Function Declarations</p>
-		<p>
-		</p>
+    <p>
+      Arrays should be formatted with a space separating each element (after the
+      comma), and spaces around the => key association operator, if applicable:
+    </p>
+<code>
+  $some_array = array('hello', 'world', 'foo' => 'bar');
+</code>
+    <p>
+      Note that if the line declaring an array spans longer than 80 characters
+      (often the case with form and menu declarations), each element should be
+      broken into its own line, and indented one level:
+    </p>
+<code>
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('The title of your node.'),
+  );
+</code>
+    <p>
+      Note the comma at the end of the last array element; This is not a typo!
+      It helps prevent parsing errors if another element is placed at the end of
+      the list later.
+    </p>
 	</section>
 
 	<section class="slide">
