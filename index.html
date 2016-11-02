@@ -48,10 +48,6 @@
 </section>
 
 <section name="PHP-coding-standards">
-	<header class="slide">
-		<h1>PHP coding standards</h1>
-	</header>
-
 	<section class="slide">
 		<p class="headline">Indenting and Whitespace</p>
 		<p>
@@ -312,8 +308,6 @@ switch ($val) {
 		<p>
       Functions should be called with no spaces between the function name, the opening parenthesis, and the first parameter; spaces between commas and each parameter, and no space between the last parameter, the closing parenthesis, and the semicolon. Here's an example:
 		</p>
-    <code>$var = foo ( $bar , $baz , $quux );</code>
-    <code>$var=foo($bar,$baz,$quux);</code>
     <code>$var = foo($bar, $baz, $quux);</code>
 		<p class="headline">Function Declarations</p>
 		<p>
@@ -350,7 +344,14 @@ switch ($val) {
     '#title' => t('Title'),
     '#size' => 60,
     '#maxlength' => 128,
-    '#description' => t('The title of your node.'),
+  );
+</code>
+<code>
+  $form['title'] = array(
+    '#type'      => 'textfield',
+    '#title'     => t( 'Title' ),
+    '#size'      => 60,
+    '#maxlength' => 128,
   );
 </code>
     <p>
@@ -365,95 +366,62 @@ switch ($val) {
 
     <h3>Functions</h3>
     <p>
+      Functions should be named using lowercase, and words should be separated
+      with an underscore. Don’t abbreviate names un-necessarily; let the code be
+      unambiguous and self-documenting.
     </p>
     <h3>Variables</h3>
     <p>
+      Variables should be named using lowercase, and words should be separated
+      either with uppercase characters or with an underscore. Be consistent;
+      do not mix camelCase and snake_case variable naming inside a file.
     </p>
+<code>
+function some_name($some_variable) {
+  ...
+}
+</code>
     <h3>Constants</h3>
 		<p>
+      Constants should always be all-uppercase, with underscores to separate
+      words. (This includes pre-defined PHP constants like TRUE, FALSE, and NULL.)
 		</p>
-	</section>
-</section>
-
-<section name="JS-coding-standards">
-	<header class="slide">
-		<h1>JavaScript coding standards</h1>
-	</header>
-
-	<section class="slide">
-		<p class="headline">Indenting and Whitespace</p>
-		<p>
-		</p>
-		<p class="headline">Semi-colons</p>
-		<p>
-		</p>
+    <code>define('DOING_AJAX', TRUE);</code>
 	</section>
 
 	<section class="slide">
-		<p class="headline">Operators</p>
-		<p>
-		</p>
-		<p class="headline">String Concatenations</p>
-		<p>
-		</p>
-  </section>
-
-	<section class="slide">
-		<p class="headline">Arrays</p>
-		<p>
-		</p>
-		<p class="headline">Typeof</p>
-		<p>
-		</p>
+		<p class="headline">Comments and Documentation</p>
+    <code>
+/**
+ * Small description.
+ *
+ * Longer description can go here, if necessary.
+ *
+ * @param string $name
+ *   User name.
+ * @param int $age
+ *   User's age.
+ * @param bool $married
+ *   (Optional) Defines user's marital status.
+ *   Default to FALSE - not married.
+ *
+ * @return bool
+ *   Returns TRUE if all went fine.
+ */
+function some_user_function($name, $age, $married = FALSE) {
+  // Check user is adult.
+  if ($age < LEGAL_ADULT) {
+    // @todo Show othe image.
+  }
+}
+    </code>
 	</section>
-
 	<section class="slide">
-		<p class="headline">Control Structures</p>
-		<p>
-		</p>
+    <br/>
+    <br/>
+<img src="img/classic.png" width="49%">
+<img src="img/goodtaste.png" width="49%">
 	</section>
-
-	<section class="slide">
-		<p class="headline">Function Calls</p>
-		<p>
-		</p>
-		<p class="headline">Function Declarations</p>
-		<p>
-		</p>
-	</section>
-
-	<section class="slide">
-		<p class="headline">Naming Conventions</p>
-
-    <h3>Functions</h3>
-    <p>
-    </p>
-    <h3>Variables</h3>
-    <p>
-      <!-- Including JQuery -->
-    </p>
-    <h3>Constants</h3>
-		<p>
-		</p>
-	</section>
-</section>
-
-<section name="API-documentation-comment-standards">
-  <header class="slide">
-    <h1>API documentation and comment standards</h1>
-  </header>
-
-  <section class="slide">
-    <p class="headline">API documentation standards (general)</p>
-    <p>
-    </p>
-  </section>
-
-  <section class="slide">
-    <p class="headline">Standards for in-line code comments</p>
-    <p>
-    </p>
-  </section>
 </section>
 
 <script src="slideshow.js"></script>
