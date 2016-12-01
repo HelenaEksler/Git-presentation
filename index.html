@@ -20,11 +20,11 @@
 	<section class="slide">
 		<p class="headline">What is it?</p>
 		<p>
-			 Coding conventions are a set of guidelines for a specific programming
-       language that recommend programming style, practices, and methods for
-       each aspect of a program written in that language.
-		<br/>
-		<br/>
+      Coding conventions are a set of guidelines for a specific programming
+      language that recommend programming style, practices, and methods for
+      each aspect of a program written in that language.
+      <br/>
+      <br/>
       When we learn a new language, we usually begin to code in a specific style.
       In most cases, we’ll write in a style that we want, not one that has been
       suggested to us. But once we start to code using a particular style, like
@@ -36,8 +36,8 @@
       <br/>
       <br/>
       It is not that hard to read some small peace of code, but when we get to
-			the large collaborated projects - no standards makes this code unreadable
-			for everybody.
+      the large collaborated projects - no standards makes this code unreadable
+      for everybody.
       <br/>
       <br/>
       Following coding standards makes our code readable for other developers
@@ -45,10 +45,8 @@
       understand what is going on in the code after some time.
 		</p>
 	</section>
-</section>
 
-<section name="PHP-coding-standards">
-	<section class="slide">
+	<section class="slide" style="font-size: 150%;">
 		<p class="headline">Indenting and Whitespace</p>
 		<p>
 			Indentation is not a requirement of most programming languages, where it
@@ -56,83 +54,86 @@
 			he structure of their programs to human readers. In particular, indentation
 			is used to show the relationship between control flow constructs such as
 			conditions or loops and code contained within and outside them.
-			<br/>
+
+    </p>
+    <p>
 			There are several widly used options for indentetion: 2 spaces, 4 spaces and tab.
 			But I would suggest to use 2 spaces, since it won't bring your line far to
 			the right if you have a lot of levels, and will stay same for all editors
 			and systems.
-			<br/>
+
+    </p>
+    <p>
 			Besides indentation - we should separate different blocks with empty lines.
 			So space should be between functions, classes etc. Also it's nice to
 			separate blocks inside one function.
 		</p>
-		<br/>
-<code>
-function some_funct() {
-return TRUE;
-}
-function main() {
-$test = some_funct();
-if ($test) {
-for ($i = 0; $i < 10; $i++) {
-if ($check = some_funct()) {
-$result[] = $i * 2;
-}
-else {
-$result[] = $i * 3;
-}
-}
-}
-return $result;
-}
-
-
-
-</code>
-<code>
-function some_funct() {
-	return TRUE;
-}
-
-function main() {
-	$test = some_funct();
-	if ($test) {
-		for ($i = 0; $i < 10; $i++) {
-			if ($check = some_funct()) {
-				$result[] = $i * 2;
-			}
-			else {
-				$result[] = $i * 3;
-			}
-		}
-	}
-	return $result;
-}
-
-
-</code>
-<code>
-function some_funct() {
-  return TRUE;
-}
-
-function main() {
-  $test = some_funct();
-
-  if ($test) {
-    for ($i = 0; $i < 10; $i++) {
-      if ($check = some_funct()) {
-        $result[] = $i * 2;
-      }
-      else {
-        $result[] = $i * 3;
-      }
+    <code>
+    function some_funct() {
+    return TRUE;
     }
-  }
+    function main() {
+    $test = some_funct();
+    if ($test) {
+    for ($i = 0; $i < 10; $i++) {
+    if ($check = some_funct()) {
+    $result[] = $i * 2;
+    }
+    else {
+    $result[] = $i * 3;
+    }
+    }
+    }
+    return $result;
+    }
 
-  return $result;
-}
-</code>
+
+
+    </code>
+    <code>
+    function some_funct() {
+    	return TRUE;
+    }
+
+    function main() {
+    	$test = some_funct();
+    	if ($test) {
+    		for ($i = 0; $i < 10; $i++) {
+    			if ($check = some_funct()) {
+    				$result[] = $i * 2;
+    			}
+    			else {
+    				$result[] = $i * 3;
+    			}
+    		}
+    	}
+    	return $result;
+    }
+
+
+    </code>
+    <code>
+    function some_funct() {
+      return TRUE;
+    }
+
+    function main() {
+      $test = some_funct();
+
+      if ($test) {
+        for ($i = 0; $i < 10; $i++) {
+          if ($check = some_funct()) {
+            $result[] = $i * 2;
+          }
+          else {
+            $result[] = $i * 3;
+          }
+        }
+      }
+
+      return $result;
+    }
+    </code>
 	</section>
 
 	<section class="slide">
@@ -141,12 +142,12 @@ function main() {
       All binary operators (operators that come between two values), such as
       <b>+, -, =, !=, ==, >, etc.</b> should have a space before and after the operator, for readability.
 		</p>
-<code>
-$a=($b+$c/2)!=$d;
-</code>
-<code>
-$a = ($b + $c / 2) != $d;
-</code>
+    <code>
+    $a=($b+$c/2)!=$d;
+    </code>
+    <code>
+    $a = ($b + $c / 2) != $d;
+    </code>
 		<p class="headline">String Concatenations</p>
     <p>
       Always use a space between the dot and the concatenated parts to improve readability.
@@ -155,22 +156,24 @@ $a = ($b + $c / 2) != $d;
       <br/>
       When using the concatenating assignment operator ('.='), use a space on each side as with the assignment operator.
     </p>
-<code>
-$string='Foo'.$bar;
-$string.='Foo'.'bar';
 
-</code>
-<code>
-$string = 'Foo' . $bar;
-$string = 'foo' . 'bar';
-$string = "Foo $bar";
-</code>
-<code>
-$string .= 'Foo';
-$string .= $bar;
-$string .= baz();
+    <code>
+    $string='Foo'.$bar;
+    $string.='Foo'.'bar';
 
-</code>
+    </code>
+    <code>
+    $string = 'Foo' . $bar;
+    $string = 'foo' . 'bar';
+    $string = "Foo $bar";
+    </code>
+    <code>
+    $string .= 'Foo';
+    $string .= $bar;
+    $string .= baz();
+
+    </code>
+
   </section>
 
   <section class="slide">
@@ -182,12 +185,14 @@ $string .= baz();
       <br/>1. Deliberate in-line variable interpolation.
       <br/>2. Translated strings where one can avoid escaping single quotes by enclosing the string in double quotes.
     </p>
-<code>
-$foo = 'Hello, world!';
-$bar = "Hello, $name!";
-$val = "Hello, it's nice to meet you!";
-// Instead of 'Hello, it\'s nice to meet you!'
-</code>
+
+		<code>
+		$foo = 'Hello, world!';
+		$bar = "Hello, $name!";
+		$val = "Hello, it's nice to meet you!";
+		// Instead of 'Hello, it\'s nice to meet you!'
+		</code>
+
     <p class="headline">Casting</p>
     <p>
       Put a space between the (type) and the $variable in a cast:
@@ -195,7 +200,9 @@ $val = "Hello, it's nice to meet you!";
     <code>(int) $mynumber</code>
 	</section>
 
-	<section class="slide">
+
+	<section class="slide" style="font-size: 150%;">
+
 		<p class="headline">Control Structures</p>
 		<p>
       Control statements should have one space between the control keyword and
@@ -209,38 +216,40 @@ $val = "Hello, it's nice to meet you!";
       the same level as the opening statement.
 		</p>
 <code>
-if (condition1 || condition2) {
-  action1;
-}
-elseif (condition3 && condition4) {
-  action2;
-}
-else {
-  defaultaction;
-}
-</code>
-<code>
-switch ($val) {
-  case 'foo':
+
+  if (condition1 || condition2) {
     action1;
-    break;
-
-  case 'bar':
+  }
+  elseif (condition3 && condition4) {
     action2;
-    break;
-
-  default:
+  }
+  else {
     defaultaction;
-}
+  }
 </code>
 <code>
-&lt;?php if (!empty($item)): ?&gt;
-  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
-&lt;?php endif; ?&gt;
+  switch ($val) {
+    case 'foo':
+      action1;
+      break;
 
-&lt;?php foreach ($items as $item): ?&gt;
-  &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
-&lt;?php endforeach; ?&gt;
+    case 'bar':
+      action2;
+      break;
+
+    default:
+      defaultaction;
+  }
+</code>
+<code>
+  &lt;?php if (!empty($item)): ?&gt;
+    &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+  &lt;?php endif; ?&gt;
+
+  &lt;?php foreach ($items as $item): ?&gt;
+    &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
+  &lt;?php endforeach; ?&gt;
+
 </code>
 	</section>
 
@@ -268,7 +277,7 @@ switch ($val) {
 </code>
 	</section>
 
-	<section class="slide">
+	<section class="slide" style="font-size: 150%;">
 		<p class="headline">Line length and wrapping</p>
     <p>
       Control structure conditions should also NOT attempt to win the Most
@@ -389,7 +398,7 @@ function some_name($some_variable) {
     <code>define('DOING_AJAX', TRUE);</code>
 	</section>
 
-	<section class="slide">
+	<section class="slide" style="font-size: 150%;">
 		<p class="headline">Comments and Documentation</p>
     <code>
 /**
